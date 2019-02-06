@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Flask Parent Template</title>
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">-->
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0px 0px 20px 0px;
+            padding: 0;
+            overflow: hidden;
+            background-color: #51c0bf;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #a8dfdf;
+        }
+
+        h1 {
+            background-color: #a8d5df;
+            font-size: 16px;
+            color: #737474;
+            padding: 16px;
+            margin: 0px;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 class="logo">Real Time Sentiment Analysis</h1>
+        <strong>
+            <nav>
+                <ul class="menu">
+                    <li><a href="{{ url_for('home') }}">Melbourne Daily Chart</a></li>
+                    <li><a href="{{ url_for('radar') }}">Real Time Radar</a></li>
+                </ul>
+            </nav>
+        </strong>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
+</body>
+</html>

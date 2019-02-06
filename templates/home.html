@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Melbourne Daily Emotion Analysis</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js'></script>
+
+</head>
+<body>
+
+{% extends "template.html" %}
+    {% block content %}
+
+<div>
+<h3 style="color:#737474; text-align: center;">{{display_date}}  Trends</h3>
+
+     <canvas id="myChart"></canvas>
+    <script>
+     var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [{% for item in labels %}
+                "{{ item }}",
+                {% endfor %}],
+    datasets: [{
+      label: 'Sadness',
+      data: [{% for item1 in sad_values %}
+                        {{item1}},
+                        {% endfor %}],
+      borderColor: "rgba(61,163,232,1)",
+      backgroundColor: "rgba(61,163,232,1)",
+         fill:false
+
+    }, {
+      label: 'Joy',
+      data: [{% for item2 in joy_values %}
+                        {{item2}},
+                        {% endfor %}],
+      borderColor: "rgba(253,101,133,1)",
+         backgroundColor: "rgba(253,101,133,1)",
+             fill:false
+    },
+    {
+      label: 'Fear',
+      data: [{% for item3 in fear_values %}
+                        {{item3}},
+                        {% endfor %}],
+      borderColor: "rgba(254,204,96,1)",
+        backgroundColor: "rgba(254,204,96,1)",
+        fill:false
+    },
+
+     {
+      label: 'Disgust',
+      data: [{% for item4 in disgust_values %}
+                        {{item4}},
+                        {% endfor %}],
+      borderColor: "rgba(253,158,75,1)",
+        backgroundColor: "rgba(253,158,75,1)",
+         fill:false
+    },
+     {
+      label: 'Anger',
+      data: [{% for item5 in anger_values %}
+                        {{item5}},
+                        {% endfor %}],
+      borderColor: "rgba(79,186,185,1)",
+        backgroundColor: "rgba(79,186,185,1)",
+         fill: false
+    }
+
+    ],
+
+     options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Melbourne Daily Emotion Report'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Time'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Emotion Index'
+						},
+
+                        ticks: {
+                suggestedMax: 1,    // minimum will be 0, unless there is a lower value.
+                beginAtZero: true   // minimum value will be 0.
+            }
+					}]
+
+
+
+
+				} }
+
+
+  }
+});
+    </script>
+</div>
+{% endblock %}
+</body>
+</html>

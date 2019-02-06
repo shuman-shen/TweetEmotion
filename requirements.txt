@@ -1,0 +1,10 @@
+Flask
+Werkzeug
+Flask-PyMongo
+pymongo
+pytz
+flask-moment
+requests
+requests_oauthlib
+watson_developer_cloud
+requests_toolbelt
